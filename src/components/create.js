@@ -1,12 +1,13 @@
 //Import local Dependencies
 import React, { Component } from 'react';
+import axios from 'axios';
 
 //Create Class
 class Create extends Component {
 
     constructor() {
         super();
-
+        //Listen to respective methods for data binding
         this.onSubmit = this.onSubmit.bind(this);
 
         this.onChangeTitle = this.onChangeTitle.bind(this);
@@ -19,27 +20,49 @@ class Create extends Component {
             Poster: ''
         }
     }
+
+    //Data Binding Title
     onChangeTitle(e) {
         this.setState({
             Title: e.target.value
         });
     }
 
+    //Data Binding Year
     onChangeYear(e){
         this.setState({
             Year: e.target.value
         });
     }
 
+    //Data Binding Poster
     onChangePoster(e){
         this.setState({
             Poster: e.target.value
         })
     }
 
+    //Data Binding Submission
     onSubmit(e) {
         e.preventDefault();
+        //Create an alert displaying the data we are submitting
         alert(`Movie: ${this.state.Title} ~ ${this.state.Year} ~ ${this.state.Poster}`);
+
+        //NewMovie Object to sent to local server
+        const newMovie = {
+            title: this.state.Title,
+            year: this.state.Year,
+            poster: this.state.Poster
+        }
+
+        //Post to local server @ /api/movies
+        axios.post('http://localhost:4000/api/movies', newMovie)
+            .then((res)=>{
+                console.log(res)
+            })
+            .catch((err)=>{
+                console.log(err);
+            })
     }
     //Render Method from Component Class
     render() {
