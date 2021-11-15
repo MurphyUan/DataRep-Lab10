@@ -6,6 +6,7 @@ import Header from './components/header';
 import Content from './components/content';
 import Footer from './components/footer';
 import Read from './components/read';
+import Edit from './components/edit';
 import Create from './components/create';
 import { Navbar, Nav } from 'react-bootstrap';
 import {
@@ -34,26 +35,10 @@ class App extends Component {
           </Navbar>
           {/* Switch Statement for Navigation */}
           <Switch>
-            {/* Route to Footer Component */}
-            <Route path="/footer">
-              <Header />
-            </Route>
-            {/* Route to Header Component */}
-            <Route path="/header">
-              <Footer />
-            </Route>
-            {/* Route to Create Component */}
-            <Route path="/create">
-              <Create />
-            </Route>
-            {/* Route to Read Component */}
-            <Route path="/read">
-              <Read />
-            </Route>
-            {/* Route to Content Component */}
-            <Route path="/">
-              <Content />
-            </Route>
+            <Route path="/" exact><Content/></Route>
+            <Route path="/create"><Create/></Route>
+            <Route path="/read"><Read/></Route>
+            <Route path={'/edit/:id'} component={Edit}></Route>
           </Switch>
         </div>
       </Router>

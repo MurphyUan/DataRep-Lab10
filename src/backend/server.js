@@ -60,6 +60,17 @@ app.get('/api/movies/:id', (req,res)=>{
     })
 })
 
+app.put('/api/movies/:id', (req, res)=>{
+    console.log(`Update movie: ${req.params.id}`);
+    console.log(req.body);
+
+    movieModel.findByIdAndUpdate(req.params.id, req.body, {new:true},
+        (err,data)=>{
+            if(err)console.log(err);
+           res.send(data); 
+        })
+})
+
 // Recieves JSON data from a post request
 app.post('/api/movies', (req,res)=>{
     console.log('Movie Recieved!')
@@ -82,7 +93,7 @@ app.listen(port, ()=>{
 
 //Function for connection to MongoDB Server through Mongoose
 async function main(){
-    await mongoose.connect(`mongodb+srv://admin:adminrules@cluster0.bov7h.mongodb.net/MovieDataBase?retryWrites=true&w=majority`)
+    await mongoose.connect(`mongodb+srv://admin:admin@cluster0.bov7h.mongodb.net/MovieDataBase?retryWrites=true&w=majority`)
 }
 
 //Initialise connection to the MongoDB Database

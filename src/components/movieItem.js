@@ -1,6 +1,7 @@
 //Import local Dependencies
 import React, {Component} from 'react';
 import { Card } from 'react-bootstrap';
+import {Link} from 'react-router-dom';
 
 //Create Class
 class MovieItem extends Component{
@@ -13,6 +14,7 @@ class MovieItem extends Component{
                     <Card.Subtitle>{this.props.item.Year}</Card.Subtitle>
                     <Card.Img src={this.props.item.Poster}></Card.Img>
                 </Card.Body>
+                <Link to={"/edit/" + this.props.item._id} className="btn btn-primary">Edit</Link>
             </Card>
         );
     }
