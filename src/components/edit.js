@@ -20,7 +20,7 @@ class Edit extends Component {
             Poster: ''
         }
     }
-
+    //Insert New Movie State so that it contains all information regardinf the movie being editted
     componentDidMount(){
         console.log(this.props.match.params.id);
 
@@ -74,7 +74,7 @@ class Edit extends Component {
             _id: this.state._id
         }
 
-        
+        //Throw New Movie Object to MongoDB Server
         axios.put('http://localhost:4000/api/movies/'+this.state._id, newMovie)
         .then(res =>{
             console.log(res.data);
