@@ -14,6 +14,7 @@ class MovieItem extends Component{
                     <Card.Subtitle>{this.props.item.Year}</Card.Subtitle>
                     <Card.Img src={this.props.item.Poster}></Card.Img>
                 </Card.Body>
+                <!-- Link to Edit Current MovieItem-->
                 <Link to={"/edit/" + this.props.item._id} className="btn btn-primary">Edit</Link>
             </Card>
         );
