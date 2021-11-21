@@ -60,6 +60,7 @@ app.get('/api/movies/:id', (req,res)=>{
     })
 })
 
+//Update File through mongoDB client
 app.put('/api/movies/:id', (req, res)=>{
     console.log(`Update movie: ${req.params.id}`);
     console.log(req.body);
