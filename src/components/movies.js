@@ -8,7 +8,8 @@ class Movies extends Component{
     render(){
         //Return HTML
         return this.props.films.map((e) => {
-            return <MovieItem item = {e} key={e.imdbID}></MovieItem>
+            //Passes multiple movie items, keys and our ReloadData Method
+            return <MovieItem item = {e} key={e.imdbID} ReloadData={this.props.ReloadData}></MovieItem>
         });
     }
 }

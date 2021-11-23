@@ -5,12 +5,21 @@ import Movies from './movies';
 
 //Read Class
 class Read extends Component {
+    constructor(){
+        super()
+        //Bind ReloadData Method to our class
+        this.ReloadData = this.ReloadData.bind(this)
+    }
     //Read State, stores Component Data
     state = {
         mymovies: [ ]
     };
     //Listen to local server for movie data
     componentDidMount(){
+        this.ReloadData()
+    }
+    //Reload Method, Loads Data from our backend/server 
+    ReloadData(){
         axios.get('http://localhost:4000/api/movies')
         .then((response) => {
             this.setState({ mymovies : response.data});
@@ -23,7 +32,7 @@ class Read extends Component {
         //Return HTML
         return (
             <div>
-                <Movies films={this.state.mymovies}></Movies>
+                <Movies films={this.state.mymovies} ReloadData={this.ReloadData}></Movies>
             </div>
         );
     }
